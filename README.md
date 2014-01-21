@@ -1,6 +1,6 @@
 # Flexile Database
 
-The Flexile Database is a set of classes to help manage information in a SQLite database (iPhone only at the moment) in an object oriented fashion. The header files are fully documented, so you can learn a lot about usage there.
+The Flexile Database is a set of classes to help manage information in a SQLite database (iPhone only at the moment) in an object oriented fashion. I use the library primarily in my own app [Flexile](http://flexile.co). The header files are fully documented, so you can learn a lot about usage there.
 
 There is one dependency: [FlexileToolkit](https://github.com/ahayman/FlexileToolkit). It a collection of classes, defines, functions, etc I use in most of my projects.
 
@@ -35,7 +35,7 @@ The `SQLStatement` is currently the main object that constructs the sql statemen
 I do not use the FMDB wrapper. To be honest, this wasn't a strategic decision as much as a desire to become a little more intimately associated with SQLite. From what I've seen of the FMDB wrapper, my comparable class `SQLDatabase` is fairly similar. I think I do a few things differently, much of it tailored to work with `SQLDatabaseManager` and probably a bit simpler in functionality, but overall the idea is pretty much the same.
 
 ## Ongoing Development
-I use this system in my production app, so bug fixes and additional features will be ongoing. If you want a feature or have a suggestion, let me know and I'll see what I can do:
+I use this system in my production app [Flexile](http://flexile.co), so bug fixes and additional features will be ongoing. If you want a feature or have a suggestion, let me know and I'll see what I can do:
 
 [aaron@flexile.co](mailto:aaron@flexile.co)
 
