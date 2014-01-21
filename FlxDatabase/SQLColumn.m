@@ -132,7 +132,6 @@
 }
 - (BOOL) isEqual:(id)object{
     if (![object isKindOfClass:[SQLColumn class]]) return NO;
-    SQLColumn *column = object;
-    return [self.nameString isEqualToString:[column nameString]];
+    return [self.nameString isEqualToString:[object nameString]];
 }
 @end
