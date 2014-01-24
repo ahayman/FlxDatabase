@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
     s.name = 'FlexileDatabase'
-    s.version = '0.1.0'
+    s.version = '0.1.2'
     s.homepage = 'https://github.com/ahayman/FlxDatabase'
     s.summary = 'A SQLite database management tool with object oriented SQL Statements.'
     s.description = <<-DESC
@@ -20,7 +20,7 @@ Warning: At the moment, while these classes handle just about all types of updat
     }
     s.source_files = 'FlxDatabase/*.{h,m}'
     s.library = 'sqlite3'
-    s.dependency 'FlexileToolkit'
+    s.dependency 'FlexileToolkit', '~> 0.x.x'
     s.platform = :ios, '5.1'
     s.requires_arc = true
 end

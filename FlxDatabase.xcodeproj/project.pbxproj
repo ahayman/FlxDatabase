@@ -27,6 +27,8 @@
 		93D171BF18859DD60028FF0F /* SQLPredicate.m in Sources */ = {isa = PBXBuildFile; fileRef = 93D171B118859DD60028FF0F /* SQLPredicate.m */; };
 		93D171C218859DD60028FF0F /* SQLStatement.m in Sources */ = {isa = PBXBuildFile; fileRef = 93D171B318859DD60028FF0F /* SQLStatement.m */; };
 		93D171C318859DD60028FF0F /* SQLStatement.m in Sources */ = {isa = PBXBuildFile; fileRef = 93D171B318859DD60028FF0F /* SQLStatement.m */; };
+		93DAEBAF1892F10200F67F92 /* SQLDatabaseManager.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 93D171A718859DD60028FF0F /* SQLDatabaseManager.h */; };
+		93DAEBB01892F10A00F67F92 /* SQLStatement.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 93D171AB18859DD60028FF0F /* SQLStatement.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +48,8 @@
 			dstPath = "include/$(PRODUCT_NAME)";
 			dstSubfolderSpec = 16;
 			files = (
+				93DAEBB01892F10A00F67F92 /* SQLStatement.h in CopyFiles */,
+				93DAEBAF1892F10200F67F92 /* SQLDatabaseManager.h in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
