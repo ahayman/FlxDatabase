@@ -42,7 +42,7 @@
 }
 #pragma mark -
 #pragma mark Properties
-- (NSString *) connectionTypeString{
+- (NSString *) connectString{
     switch (_connect) {
         case SQLConnectAnd:
             return @" AND";
@@ -52,7 +52,7 @@
             return @" AND";
     }
 }
-- (NSString *) predicateTypeString{
+- (NSString *) operatorString{
     switch (_op) {
         case SQLLike: return @"LIKE";
         case SQLEquals: return @"IS";
