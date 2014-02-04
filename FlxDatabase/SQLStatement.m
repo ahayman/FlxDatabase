@@ -9,7 +9,7 @@
 #import "SQLStatement.h"
 #import "FlxToolkit.h"
 
-@interface SQLStatement (private) 
+@interface SQLStatement () 
 - (NSString *) constructCreateStatement;
 - (NSString *) constructUpdateStatement;
 - (NSString *) constructInsertStatement;
