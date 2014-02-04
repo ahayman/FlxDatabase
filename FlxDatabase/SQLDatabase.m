@@ -244,7 +244,11 @@
     for (int i=0; i < columnCount; i++){
         id value = [self valueFromStatement:statement column:i queryInfo:queryInfo columnTypes:columnTypes];
         if (value){
-            [row setValue:value forKeyPath:columnNames[i]];
+            if ([row isKindOfClass:[NSMutableDictionary class]]){
+                [row setValue:value forKey:columnNames[i]];
+            } else {
+                [row setValue:value forKeyPath:columnNames[i]];
+            }
         }
     }
 }
