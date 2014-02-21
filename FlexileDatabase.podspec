@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
     s.name = 'FlexileDatabase'
-    s.version = '0.1.3'
+    s.version = '0.1.4'
     s.homepage = 'https://github.com/ahayman/FlxDatabase'
     s.summary = 'A SQLite database management tool with object oriented SQL Statements.'
     s.description = <<-DESC
