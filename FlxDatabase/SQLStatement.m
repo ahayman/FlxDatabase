@@ -194,7 +194,7 @@ static NSArray *defaultColumnTypes(){
     return statement;
 }
 - (NSString *) constructInsertStatement{
-    int count = _columns.count;
+    NSUInteger count = _columns.count;
     if (count < 1) return @"";
     NSMutableString *statement = [NSMutableString stringWithFormat:@"INSERT OR %@ INTO \"%@\" (",[self sqlConflictString], _tableName];
     NSMutableString *valueStatement = [NSMutableString stringWithString:@" VALUES ("];
@@ -231,7 +231,7 @@ static NSArray *defaultColumnTypes(){
     return statement;
 }
 - (NSString *) constructQueryStatement{
-    int count = _columns.count;
+    NSUInteger count = _columns.count;
     if (count < 1) return @"";
     NSMutableString *statement = [NSMutableString stringWithString:@"SELECT"];
     if (_selectDistinct) [statement appendString:@" DISTINCT"];
@@ -299,10 +299,10 @@ static NSArray *defaultColumnTypes(){
                         else
                             [_parameters addObject:[pred description]];
                     }
-                    [statement appendFormat:@" ELSE %i END", order.customOrdering.count];
+                    [statement appendFormat:@" ELSE %lu END", (unsigned long)order.customOrdering.count];
                 } else {
                     for (int i = 0; i < order.customOrdering.count; i++){
-                        [statement appendFormat:@" WHEN ? THEN %i", order.customOrdering.count - i];
+                        [statement appendFormat:@" WHEN ? THEN %lu", (unsigned long)order.customOrdering.count - i];
                         id pred = order.customOrdering[i];
                         if ([pred isKindOfClass:[NSNumber class]] || [pred isKindOfClass:[NSString class]])
                             [_parameters addObject:pred];
@@ -321,8 +321,8 @@ static NSArray *defaultColumnTypes(){
     }
     
     if (_limit > 0 || _offset > -1){
-        [statement appendFormat:@" LIMIT %i", _limit];
-        if (_offset > -1) [statement appendFormat:@" OFFSET %i", _offset];
+        [statement appendFormat:@" LIMIT %lu", (unsigned long)_limit];
+        if (_offset > -1) [statement appendFormat:@" OFFSET %ld",(long)_offset];
     }
     
     [statement appendString:@";"];
