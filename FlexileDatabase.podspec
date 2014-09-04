@@ -20,7 +20,6 @@ Warning: At the moment, while these classes handle just about all types of updat
     }
     s.source_files = 'FlxDatabase/*.{h,m}'
     s.library = 'sqlite3'
-    s.dependency 'FlexileToolkit', '~> 0.x.x'
     s.platform = :ios, '5.1'
     s.requires_arc = true
 end
