@@ -6,12 +6,30 @@
 	objectVersion = 46;
 	objects = {
 
+/* Begin PBXAggregateTarget section */
+		93A2F46E18B8303700FAFC27 /* Documentation */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 93A2F47118B8303700FAFC27 /* Build configuration list for PBXAggregateTarget "Documentation" */;
+			buildPhases = (
+				93A2F47218B830FA00FAFC27 /* ShellScript */,
+			);
+			dependencies = (
+			);
+			name = Documentation;
+			productName = Documentation;
+		};
+/* End PBXAggregateTarget section */
+
 /* Begin PBXBuildFile section */
-		46C4E2969B00423ABB4C4139 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AFF39F567D5A4B4F8A10474C /* libPods.a */; };
+		9302634619B90067009BE472 /* SQLStatementConstructor.m in Sources */ = {isa = PBXBuildFile; fileRef = 9302634519B90067009BE472 /* SQLStatementConstructor.m */; };
+		9302634819B918F3009BE472 /* SQLStatementConstructorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9302634719B918F3009BE472 /* SQLStatementConstructorTests.m */; };
+		9302634B19B9253B009BE472 /* SQLDelayedExecution.m in Sources */ = {isa = PBXBuildFile; fileRef = 9302634A19B9253B009BE472 /* SQLDelayedExecution.m */; };
+		9302634D19B92621009BE472 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9302634C19B92620009BE472 /* UIKit.framework */; };
+		9302634F19B9264B009BE472 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9302634E19B9264B009BE472 /* libsqlite3.dylib */; };
+		9302635019B926BF009BE472 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9302634E19B9264B009BE472 /* libsqlite3.dylib */; };
 		93D1717F18859C9C0028FF0F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93D1717E18859C9B0028FF0F /* Foundation.framework */; };
 		93D1718D18859C9C0028FF0F /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93D1718C18859C9C0028FF0F /* XCTest.framework */; };
 		93D1718E18859C9C0028FF0F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93D1717E18859C9B0028FF0F /* Foundation.framework */; };
-		93D1719018859C9C0028FF0F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93D1718F18859C9C0028FF0F /* UIKit.framework */; };
 		93D1719318859C9C0028FF0F /* libFlxDatabase.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 93D1717B18859C9B0028FF0F /* libFlxDatabase.a */; };
 		93D1719918859C9C0028FF0F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 93D1719718859C9C0028FF0F /* InfoPlist.strings */; };
 		93D1719B18859C9C0028FF0F /* FlxDatabaseTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 93D1719A18859C9C0028FF0F /* FlxDatabaseTests.m */; };
@@ -56,13 +74,19 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		9302634419B90067009BE472 /* SQLStatementConstructor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SQLStatementConstructor.h; sourceTree = "<group>"; };
+		9302634519B90067009BE472 /* SQLStatementConstructor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SQLStatementConstructor.m; sourceTree = "<group>"; };
+		9302634719B918F3009BE472 /* SQLStatementConstructorTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SQLStatementConstructorTests.m; sourceTree = "<group>"; };
+		9302634919B9253B009BE472 /* SQLDelayedExecution.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SQLDelayedExecution.h; sourceTree = "<group>"; };
+		9302634A19B9253B009BE472 /* SQLDelayedExecution.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SQLDelayedExecution.m; sourceTree = "<group>"; };
+		9302634C19B92620009BE472 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		9302634E19B9264B009BE472 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		933F1E4B1889701C00138795 /* SQLStatementProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SQLStatementProtocol.h; sourceTree = "<group>"; };
 		93D1717B18859C9B0028FF0F /* libFlxDatabase.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libFlxDatabase.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		93D1717E18859C9B0028FF0F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		93D1718218859C9C0028FF0F /* FlxDatabase-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FlxDatabase-Prefix.pch"; sourceTree = "<group>"; };
 		93D1718B18859C9C0028FF0F /* FlxDatabaseTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FlxDatabaseTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		93D1718C18859C9C0028FF0F /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		93D1718F18859C9C0028FF0F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		93D1719618859C9C0028FF0F /* FlxDatabaseTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "FlxDatabaseTests-Info.plist"; sourceTree = "<group>"; };
 		93D1719818859C9C0028FF0F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		93D1719A18859C9C0028FF0F /* FlxDatabaseTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FlxDatabaseTests.m; sourceTree = "<group>"; };
@@ -78,8 +102,6 @@
 		93D171B018859DD60028FF0F /* SQLOrder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SQLOrder.m; sourceTree = "<group>"; };
 		93D171B118859DD60028FF0F /* SQLPredicate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SQLPredicate.m; sourceTree = "<group>"; };
 		93D171B318859DD60028FF0F /* SQLStatement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SQLStatement.m; sourceTree = "<group>"; };
-		AFF39F567D5A4B4F8A10474C /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		B4B2B03C34174F8087A1959B /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,8 +109,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9302634F19B9264B009BE472 /* libsqlite3.dylib in Frameworks */,
+				9302634D19B92621009BE472 /* UIKit.framework in Frameworks */,
 				93D1717F18859C9C0028FF0F /* Foundation.framework in Frameworks */,
-				46C4E2969B00423ABB4C4139 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -98,7 +121,7 @@
 			files = (
 				93D1718D18859C9C0028FF0F /* XCTest.framework in Frameworks */,
 				93D1719318859C9C0028FF0F /* libFlxDatabase.a in Frameworks */,
-				93D1719018859C9C0028FF0F /* UIKit.framework in Frameworks */,
+				9302635019B926BF009BE472 /* libsqlite3.dylib in Frameworks */,
 				93D1718E18859C9C0028FF0F /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -113,7 +136,6 @@
 				93D1719418859C9C0028FF0F /* FlxDatabaseTests */,
 				93D1717D18859C9B0028FF0F /* Frameworks */,
 				93D1717C18859C9B0028FF0F /* Products */,
-				B4B2B03C34174F8087A1959B /* Pods.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -129,10 +151,10 @@
 		93D1717D18859C9B0028FF0F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9302634E19B9264B009BE472 /* libsqlite3.dylib */,
+				9302634C19B92620009BE472 /* UIKit.framework */,
 				93D1717E18859C9B0028FF0F /* Foundation.framework */,
 				93D1718C18859C9C0028FF0F /* XCTest.framework */,
-				93D1718F18859C9C0028FF0F /* UIKit.framework */,
-				AFF39F567D5A4B4F8A10474C /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -153,6 +175,10 @@
 				93D171B118859DD60028FF0F /* SQLPredicate.m */,
 				93D171AB18859DD60028FF0F /* SQLStatement.h */,
 				93D171B318859DD60028FF0F /* SQLStatement.m */,
+				9302634419B90067009BE472 /* SQLStatementConstructor.h */,
+				9302634519B90067009BE472 /* SQLStatementConstructor.m */,
+				9302634919B9253B009BE472 /* SQLDelayedExecution.h */,
+				9302634A19B9253B009BE472 /* SQLDelayedExecution.m */,
 				93D1718118859C9C0028FF0F /* Supporting Files */,
 			);
 			path = FlxDatabase;
@@ -169,6 +195,7 @@
 		93D1719418859C9C0028FF0F /* FlxDatabaseTests */ = {
 			isa = PBXGroup;
 			children = (
+				9302634719B918F3009BE472 /* SQLStatementConstructorTests.m */,
 				93D1719A18859C9C0028FF0F /* FlxDatabaseTests.m */,
 				93D1719518859C9C0028FF0F /* Supporting Files */,
 			);
@@ -191,11 +218,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 93D1719E18859C9C0028FF0F /* Build configuration list for PBXNativeTarget "FlxDatabase" */;
 			buildPhases = (
-				A2DC7F76A98649B2BC7E22EB /* Check Pods Manifest.lock */,
 				93D1717718859C9B0028FF0F /* Sources */,
 				93D1717818859C9B0028FF0F /* Frameworks */,
 				93D1717918859C9B0028FF0F /* CopyFiles */,
-				A368999BE82042E199B66667 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -230,7 +255,7 @@
 		93D1717318859C9B0028FF0F /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0500;
+				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = "Aaron Hayman";
 			};
 			buildConfigurationList = 93D1717618859C9B0028FF0F /* Build configuration list for PBXProject "FlxDatabase" */;
@@ -247,6 +272,7 @@
 			targets = (
 				93D1717A18859C9B0028FF0F /* FlxDatabase */,
 				93D1718A18859C9C0028FF0F /* FlxDatabaseTests */,
+				93A2F46E18B8303700FAFC27 /* Documentation */,
 			);
 		};
 /* End PBXProject section */
@@ -263,35 +289,18 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		A2DC7F76A98649B2BC7E22EB /* Check Pods Manifest.lock */ = {
+		93A2F47218B830FA00FAFC27 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		A368999BE82042E199B66667 /* Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
-			showEnvVarsInLog = 0;
+			shellScript = "#appledoc Xcode script\n# Start constants\ncompany=\"FlexileSoft\";\ncompanyID=\"FlexileSoft.com\";\ncompanyURL=\"http://flexile.co\";\ntarget=\"iphoneos\";\n#target=\"macosx\";\noutputPath=\"~/help\";\n# End constants\n/usr/local/bin/appledoc \\\n--project-name \"${PROJECT_NAME}\" \\\n--project-company \"${company}\" \\\n--company-id \"${companyID}\" \\\n--docset-atom-filename \"${company}.atom\" \\\n--docset-feed-url \"${companyURL}/${company}/%DOCSETATOMFILENAME\" \\\n--docset-package-url \"${companyURL}/${company}/%DOCSETPACKAGEFILENAME\" \\\n--docset-fallback-url \"${companyURL}/${company}\" \\\n--output \"${outputPath}\" \\\n--publish-docset \\\n--docset-platform-family \"${target}\" \\\n--logformat xcode \\\n--keep-intermediate-files \\\n--no-repeat-first-par \\\n--no-warn-invalid-crossref \\\n--index-desc \"${PROJECT_DIR}/README.md\" \\\n--exit-threshold 2 \\\n\"${PROJECT_DIR}\"";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -304,8 +313,10 @@
 				93D171C218859DD60028FF0F /* SQLStatement.m in Sources */,
 				93D171B818859DD60028FF0F /* SQLDatabase.m in Sources */,
 				93D171B618859DD60028FF0F /* SQLColumn.m in Sources */,
+				9302634B19B9253B009BE472 /* SQLDelayedExecution.m in Sources */,
 				93D171BC18859DD60028FF0F /* SQLOrder.m in Sources */,
 				93D171BE18859DD60028FF0F /* SQLPredicate.m in Sources */,
+				9302634619B90067009BE472 /* SQLStatementConstructor.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -320,6 +331,7 @@
 				93D171B718859DD60028FF0F /* SQLColumn.m in Sources */,
 				93D171BD18859DD60028FF0F /* SQLOrder.m in Sources */,
 				93D171BF18859DD60028FF0F /* SQLPredicate.m in Sources */,
+				9302634819B918F3009BE472 /* SQLStatementConstructorTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -345,11 +357,24 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		93A2F46F18B8303700FAFC27 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		93A2F47018B8303700FAFC27 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 		93D1719C18859C9C0028FF0F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -387,7 +412,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -417,7 +441,6 @@
 		};
 		93D1719F18859C9C0028FF0F /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B4B2B03C34174F8087A1959B /* Pods.xcconfig */;
 			buildSettings = {
 				DSTROOT = /tmp/FlxDatabase.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -430,7 +453,6 @@
 		};
 		93D171A018859C9C0028FF0F /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B4B2B03C34174F8087A1959B /* Pods.xcconfig */;
 			buildSettings = {
 				DSTROOT = /tmp/FlxDatabase.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -444,7 +466,6 @@
 		93D171A218859C9C0028FF0F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -465,7 +486,6 @@
 		93D171A318859C9C0028FF0F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -482,6 +502,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		93A2F47118B8303700FAFC27 /* Build configuration list for PBXAggregateTarget "Documentation" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				93A2F46F18B8303700FAFC27 /* Debug */,
+				93A2F47018B8303700FAFC27 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		93D1717618859C9B0028FF0F /* Build configuration list for PBXProject "FlxDatabase" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

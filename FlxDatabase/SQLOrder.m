@@ -7,7 +7,8 @@
 //
 
 #import "SQLOrder.h"
-#import "FlxToolkit.h"
+
+#define $(...)        [NSString  stringWithFormat:__VA_ARGS__,nil]
 
 @implementation SQLOrder{
     SQLOrderDirection _orderDirection;

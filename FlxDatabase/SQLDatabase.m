@@ -7,7 +7,11 @@
     // pg 159
 
 #import "SQLDatabase.h"
-#import "FlxToolkit.h"
+#import <sqlite3.h>
+
+#define $(...)        [NSString  stringWithFormat:__VA_ARGS__,nil]
+
+#define DocumentDirectory (NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES).firstObject)
 
 @implementation SQLDatabase {
     NSString *pathToDatabase;
@@ -56,7 +60,7 @@
         //Limiting the cache to zero to reduce memory footprint.  Might reenable if performance ever becomes a problem.
         const char *pragmaSql = "PRAGMA cache_size = 0";
         if (sqlite3_exec(database, pragmaSql, NULL, NULL, NULL) != SQLITE_OK) {
-            FlxAssert(NO, @"Error: failed to execute pragma statement with message '%s'.", sqlite3_errmsg(database));
+            NSAssert(NO, @"Error: failed to execute pragma statement with message '%s'.", sqlite3_errmsg(database));
         }
     }
     
@@ -152,7 +156,7 @@
     /* This method binds arguments to the sql statement.  Takes an array of objects. And a pointer to the statement */
     int expectedArguments = sqlite3_bind_parameter_count(statement);
         //The number of arguments must match the parameter count in the statement.
-    FlxAssert(expectedArguments == [arguments count], @"Number of bound parameters does not match for sql: %@ \n Parameters: %@'", [queryInfo objectForKey:@"sql"], [queryInfo objectForKey:@"parameters"]);
+    NSAssert(expectedArguments == [arguments count], @"Number of bound parameters does not match for sql: %@ \n Parameters: %@'", [queryInfo objectForKey:@"sql"], [queryInfo objectForKey:@"parameters"]);
     id argument;
         //Bind each argument to the statement depending on class type
     for (int i=1; i <= expectedArguments; i++){
@@ -273,7 +277,7 @@
     } else if (columnType == SQLITE_NULL){
         return nil;
     }
-    FlxLog(@"Unrecognized SQL column type: %i for sql: %@", columnType, [queryInfo objectForKey:@"sql"]);
+  //NSLog(@"Unrecognized SQL column type: %i for sql: %@", columnType, [queryInfo objectForKey:@"sql"]);
     return nil;
 }
 #pragma mark -
@@ -310,14 +314,12 @@
 #pragma mark -
 #pragma mark Error Handling
 - (void) sqlError:(NSString *)errorMessage errorCode:(int)errorCode critical:(BOOL)critical{
-    NSString *error = $(@"%@ : Error: %@", [self sqliteError:errorCode], errorMessage);
-    FlxTry(NO, error, NO, {
-        if (critical){
-            [FlxAlert displayAlertWithTitle:@"Database Error" message:$(@"Woah!  There seems to be an internal database error!  The error is already being sent to us so we can work to prevent this in the future. However, we must close the app in order to prevent data corruption.  We're really sorry about this but once you tap OK the app will be closed. \n\nError:\n%@", [self sqliteError:errorCode]) completion:^(NSUInteger index) {
-                [NSException raise:error format:nil];
-            }];
-        }
-    })
+  NSString *error = $(@"%@ : Error: %@", [self sqliteError:errorCode], errorMessage);
+  if (critical){
+//    [FlxAlert displayAlertWithTitle:@"Database Error" message:$(@"Woah!  There seems to be an internal database error!  The error is already being sent to us so we can work to prevent this in the future. However, we must close the app in order to prevent data corruption.  We're really sorry about this but once you tap OK the app will be closed. \n\nError:\n%@", [self sqliteError:errorCode]) completion:^(NSUInteger index) {
+      [NSException raise:error format:nil];
+//    }];
+  }
 }
 - (NSString *) sqliteError:(int)error{
     switch (error) {

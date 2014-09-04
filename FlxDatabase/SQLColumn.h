@@ -6,7 +6,7 @@
 //
 //
 
-#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 @class SQLStatement;
 
 typedef NS_ENUM(NSUInteger, SQLColumnType){

@@ -69,3 +69,13 @@ typedef NS_ENUM(NSUInteger, SQLStatementType){
  */
 @property SQLStatementType SQLType;
 @end
+
+
+/**
+ *  All SQLStatement have a default set of columns: GUID, SQLCreatedDate, and SQLModifiedDate.  If you're constructing objects directly, you'll need to make sure you have those columns.  Use this protocol to ensure this.
+ */
+@protocol SQLStatementObject <NSObject>
+@property (nonatomic) NSString *GUID;
+@property (nonatomic) NSNumber *SQLCreatedDateTime;
+@property (nonatomic) NSNumber *SQLModifiedDateTime;
+@end

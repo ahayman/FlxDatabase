@@ -7,11 +7,12 @@
     //
 
 #import "SQLDatabaseManager.h"
-#import "FlxToolkit.h"
 #import "SQLStatement.h"
+#import "SQLDelayedExecution.h"
 
 #define DBQueue "SQLExecutionQueue"
 #define DBOperation "SQLOperationQueue"
+#define DocumentDirectory (NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES).firstObject)
 
 @interface WeakContainer : NSObject
 @property (weak) id object;
@@ -105,9 +106,7 @@ static NSMutableDictionary *DBManagers(){
     return [self initWithFilePath:[DocumentDirectory stringByAppendingPathComponent:fileName]];
 }
 - (id) initWithFilePath:(NSString *)path{
-    FlxTry(path.length, @"Tried to initiate a SQLDBManager without providing a file path.", YES, {
-        return nil;
-    })
+  if (!path.length) return nil;
     //Only one manager can be instantiated for an individual path
     NSMutableDictionary *managers = DBManagers();
     SQLDatabaseManager *manager = [managers[path] object];
@@ -136,7 +135,7 @@ static NSMutableDictionary *DBManagers(){
     if (!_queriesNeedProcessing){
         _queriesNeedProcessing = YES;
         dispatch_async(dispatch_get_main_queue(), ^{
-            [self performSelector:@selector(processPendingQueries) withObject:nil afterDelay:0 inModes:Array(NSRunLoopCommonModes)];
+            [self performSelector:@selector(processPendingQueries) withObject:nil afterDelay:0 inModes:@[NSRunLoopCommonModes]];
         });
     }
 }
@@ -144,7 +143,7 @@ static NSMutableDictionary *DBManagers(){
     if (!_updatesNeedProcessing){
         _updatesNeedProcessing = YES;
         dispatch_async(dispatch_get_main_queue(), ^{
-            [self performSelector:@selector(processPendingUpdates) withObject:nil afterDelay:0 inModes:Array(NSRunLoopCommonModes)];
+            [self performSelector:@selector(processPendingUpdates) withObject:nil afterDelay:0 inModes:@[NSRunLoopCommonModes]];
         });
     }
 }
@@ -402,7 +401,7 @@ static NSMutableDictionary *DBManagers(){
 - (void) updateTableToColumnsInStatement:(SQLStatement *)statement onCompletion:(CompletionBlock)completionBlock{
     statement.tableInfo = YES;
     [self runImmediateQuery:statement withBlock:^(NSArray *tableResults){
-        FlxReferencedExecution *rExec = (completionBlock) ? [FlxReferencedExecution new] : nil;
+        SQLDelayedExecution *rExec = (completionBlock) ? [SQLDelayedExecution new] : nil;
         [rExec addBlock:completionBlock];
         BOOL found = NO;
         NSMutableArray *results = [NSMutableArray arrayWithArray:tableResults];
@@ -420,7 +419,7 @@ static NSMutableDictionary *DBManagers(){
                 [self runImmediateUpdate:addColumn withBlock:^(NSInteger result){
                     if (result >= 0){
                         [rExec decrement];
-                    } else FlxLog(@"SQLExecutionManager.updateTableToColumnsInConstructor: SQL Column Add failed: %@", addColumn.newStatement);
+                    } //else FlxLog(@"SQLExecutionManager.updateTableToColumnsInConstructor: SQL Column Add failed: %@", addColumn.newStatement);
                 }];
             }
             found = NO;

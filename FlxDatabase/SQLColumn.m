@@ -7,7 +7,8 @@
 //
 
 #import "SQLColumn.h"
-#import "FlxToolkit.h"
+
+#define $(...)        [NSString  stringWithFormat:__VA_ARGS__,nil]
 
 @implementation SQLColumn{
     NSString *_name;
@@ -103,7 +104,7 @@
 - (void) setValue:(id)value{
     if ([self validateValue:value]) _value = value;
     else {
-        FlxLog(@"Column type: %@, couldn't validate Value: %@", [self columnTypeString], value);
+      //FlxLog(@"Column type: %@, couldn't validate Value: %@", [self columnTypeString], value);
         _value = nil;
     }
 }
@@ -120,7 +121,7 @@
         case SQLColumnTypeInt:
             return [value isKindOfClass:[NSNumber class]] || [value isKindOfClass:[NSDate class]];
         case SQLColumnTypeBlob:
-            return [value isKindOfClass:[NSString class]] || [value isKindOfClass:[NSData class]];
+            return [value isKindOfClass:[NSString class]] || [value isKindOfClass:[NSData class]] || [value isKindOfClass:[UIImage class]];
         case SQLColumnTypeText:
             return [value isKindOfClass:[NSString class]];
     }

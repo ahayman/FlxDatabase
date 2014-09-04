@@ -7,9 +7,10 @@
     //
 
 #import "SQLStatement.h"
-#import "FlxToolkit.h"
 
-@interface SQLStatement () 
+#define $(...)        [NSString  stringWithFormat:__VA_ARGS__,nil]
+
+@interface SQLStatement ()
 - (NSString *) constructCreateStatement;
 - (NSString *) constructUpdateStatement;
 - (NSString *) constructInsertStatement;
@@ -43,7 +44,7 @@ static NSArray *defaultColumns(){
     static NSArray *defaultColumns = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        defaultColumns = Array(GUIDKey, SQLCreatedDate, SQLModifiedDate);
+      defaultColumns = @[GUIDKey, SQLCreatedDate, SQLModifiedDate];
     });
     return defaultColumns;
 }
@@ -51,7 +52,7 @@ static NSArray *defaultColumnTypes(){
     static NSArray *types = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        types = Array(@(SQLColumnTypeText), @(SQLColumnTypeReal), @(SQLColumnTypeReal));
+        types = @[@(SQLColumnTypeText), @(SQLColumnTypeReal), @(SQLColumnTypeReal)];
     });
     return types;
 }
@@ -75,9 +76,7 @@ static NSArray *defaultColumnTypes(){
     return nil;
 }
 - (id) initWithType:(SQLStatementType)sqlType forTable:(NSString *)tableName{
-    FlxTry(tableName.length, @"Tried to init a SQLStatement without a table name. Sorry, but you need a table name.", NO, {
-        return nil;
-    })
+  if (!tableName.length) return nil;
     if ((self = [super init])){
         _tableName = tableName;
         self.SQLType = sqlType;
@@ -173,7 +172,7 @@ static NSArray *defaultColumnTypes(){
     [_parameters addObject:now];
     _modified = [NSNumber numberWithDouble:[now timeIntervalSinceReferenceDate]];
     
-    NSArray *disallowedUpdates = Array(@"*", GUIDKey, SQLCreatedDate, SQLModifiedDate);
+    NSArray *disallowedUpdates = @[@"*", GUIDKey, SQLCreatedDate, SQLModifiedDate];
     
     for (int i = 0; i < _columns.count; i++) {
         SQLColumn *currentColumn = [_columns objectAtIndex:i];
@@ -434,10 +433,10 @@ static NSArray *defaultColumnTypes(){
 - (id) copyWithZone:(NSZone *)zone{
     SQLStatement *returnConstructor = [[[self class] alloc] initWithType:_SQLType forTable:_tableName];
     returnConstructor.conflict = self.conflict;
-    returnConstructor.columns = _columns.deepCopy;
-    returnConstructor.predicates = _predicates.deepCopy;
-    returnConstructor.orderings = _orderings.deepCopy;
-    returnConstructor.groups = _groups.deepCopy;
+    returnConstructor.columns = [[NSMutableArray alloc] initWithArray:_columns copyItems:YES];
+    returnConstructor.predicates = [[NSMutableArray alloc] initWithArray:_predicates copyItems:YES];
+    returnConstructor.orderings = [[NSMutableArray alloc] initWithArray:_orderings copyItems:YES];
+    returnConstructor.groups = [[NSMutableArray alloc] initWithArray:_groups copyItems:YES];
     returnConstructor.limit = self.limit;
     returnConstructor.offset = self.offset;
     returnConstructor.selectDistinct = self.selectDistinct;
@@ -497,7 +496,10 @@ static NSArray *defaultColumnTypes(){
 }
 - (NSString *) GUID{
     if (!_GUID){
-        _GUID = [NSString newGUID];
+      CFUUIDRef theUUID = CFUUIDCreate(NULL);
+      CFStringRef string = CFUUIDCreateString(NULL, theUUID);
+      CFRelease(theUUID);
+      _GUID = (__bridge_transfer NSString *)string;
     }
     return _GUID;
 }

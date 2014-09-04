@@ -17,6 +17,7 @@
 #define SQLCreatedDate @"SQLCreatedDateTime"
 #define SQLModifiedDate @"SQLModifiedDateTime"
 
+
 typedef NS_ENUM(NSUInteger, SQLConflict) {
     SQLConflictReplace,
     SQLConflictIgnore,
