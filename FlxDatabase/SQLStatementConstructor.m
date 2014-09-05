@@ -30,12 +30,17 @@
   switch (attribute[1]) {
     case 'd':
     case 'f':
-    case 'l':
-    case 's':
       propertyObj.propertyColumn = SQLColumnTypeReal;
       break;
     case 'i':
+    case 'q':
+    case 'Q':
+    case 'l':
+    case 'L':
     case 'I':
+    case 'B':
+    case 's':
+    case 'S':
       propertyObj.propertyColumn = SQLColumnTypeInt;
       break;
     case '@':
