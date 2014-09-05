@@ -57,7 +57,7 @@
           propertyObj.propertyColumn = SQLColumnTypeText;
         } else if ([propertyClass isSubclassOfClass:[NSNumber class]]){
           propertyObj.propertyColumn = SQLColumnTypeReal;
-        } else if ([propertyClass isSubclassOfClass:[UIImage class]] || [propertyClass isSubclassOfClass:[NSData class]]){
+        } else if ([propertyClass isSubclassOfClass:[NSData class]]){
           propertyObj.propertyColumn = SQLColumnTypeBlob;
         } else {
           //We don't recognize the class, so we can't use the property

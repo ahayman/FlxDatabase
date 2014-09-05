@@ -24,8 +24,6 @@
 		9302634619B90067009BE472 /* SQLStatementConstructor.m in Sources */ = {isa = PBXBuildFile; fileRef = 9302634519B90067009BE472 /* SQLStatementConstructor.m */; };
 		9302634819B918F3009BE472 /* SQLStatementConstructorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9302634719B918F3009BE472 /* SQLStatementConstructorTests.m */; };
 		9302634B19B9253B009BE472 /* SQLDelayedExecution.m in Sources */ = {isa = PBXBuildFile; fileRef = 9302634A19B9253B009BE472 /* SQLDelayedExecution.m */; };
-		9302634D19B92621009BE472 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9302634C19B92620009BE472 /* UIKit.framework */; };
-		9302634F19B9264B009BE472 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9302634E19B9264B009BE472 /* libsqlite3.dylib */; };
 		9302635019B926BF009BE472 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9302634E19B9264B009BE472 /* libsqlite3.dylib */; };
 		93D1717F18859C9C0028FF0F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93D1717E18859C9B0028FF0F /* Foundation.framework */; };
 		93D1718D18859C9C0028FF0F /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93D1718C18859C9C0028FF0F /* XCTest.framework */; };
@@ -79,7 +77,6 @@
 		9302634719B918F3009BE472 /* SQLStatementConstructorTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SQLStatementConstructorTests.m; sourceTree = "<group>"; };
 		9302634919B9253B009BE472 /* SQLDelayedExecution.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SQLDelayedExecution.h; sourceTree = "<group>"; };
 		9302634A19B9253B009BE472 /* SQLDelayedExecution.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SQLDelayedExecution.m; sourceTree = "<group>"; };
-		9302634C19B92620009BE472 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		9302634E19B9264B009BE472 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		933F1E4B1889701C00138795 /* SQLStatementProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SQLStatementProtocol.h; sourceTree = "<group>"; };
 		93D1717B18859C9B0028FF0F /* libFlxDatabase.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libFlxDatabase.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -109,8 +106,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9302634F19B9264B009BE472 /* libsqlite3.dylib in Frameworks */,
-				9302634D19B92621009BE472 /* UIKit.framework in Frameworks */,
 				93D1717F18859C9C0028FF0F /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -152,7 +147,6 @@
 			isa = PBXGroup;
 			children = (
 				9302634E19B9264B009BE472 /* libsqlite3.dylib */,
-				9302634C19B92620009BE472 /* UIKit.framework */,
 				93D1717E18859C9B0028FF0F /* Foundation.framework */,
 				93D1718C18859C9C0028FF0F /* XCTest.framework */,
 			);

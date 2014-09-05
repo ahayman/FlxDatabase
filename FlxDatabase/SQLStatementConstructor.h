@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 Aaron Hayman. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
 #import "SQLStatementProtocol.h"
 @class SQLStatement;
 

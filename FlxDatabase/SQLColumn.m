@@ -121,7 +121,7 @@
         case SQLColumnTypeInt:
             return [value isKindOfClass:[NSNumber class]] || [value isKindOfClass:[NSDate class]];
         case SQLColumnTypeBlob:
-            return [value isKindOfClass:[NSString class]] || [value isKindOfClass:[NSData class]] || [value isKindOfClass:[UIImage class]];
+            return [value isKindOfClass:[NSString class]] || [value isKindOfClass:[NSData class]];
         case SQLColumnTypeText:
             return [value isKindOfClass:[NSString class]];
     }

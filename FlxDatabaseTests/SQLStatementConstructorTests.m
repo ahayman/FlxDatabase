@@ -18,14 +18,14 @@
 @property (nonatomic) NSNumber *testNSNumber;
 @property (nonatomic) NSString *testString;
 @property (nonatomic) NSData *testData;
-@property (nonatomic) UIImage *testImage;
+@property (nonatomic) BOOL testBool;
 @end
 
 @interface TestProtocolClass : NSObject <TestProtocol>
 @end
 @implementation TestProtocolClass
 @synthesize GUID, SQLCreatedDateTime, SQLModifiedDateTime;
-@synthesize testInt, testDouble, testFloat, testCGFloat, testNSNumber, testString, testData, testImage;
+@synthesize testInt, testDouble, testFloat, testCGFloat, testNSNumber, testString, testData, testBool;
 @end
 
 @interface SQLStatementConstructorTests : XCTestCase
@@ -94,8 +94,8 @@
   XCTAssertEqual(column.type, SQLColumnTypeBlob, @"Check Column Type");
   
   column = statement.columns[10];
-  XCTAssertEqualObjects(@"testImage", column.name, @"Check Column Name");
-  XCTAssertEqual(column.type, SQLColumnTypeBlob, @"Check Column Type");
+  XCTAssertEqualObjects(@"testBool", column.name, @"Check Column Name");
+  XCTAssertEqual(column.type, SQLColumnTypeInt, @"Check Column Type");
   
 }
 - (void) testQueryWithCustomTable{
@@ -108,7 +108,6 @@
 }
 - (void) testUpdate{
   NSData *testData = [[NSData alloc] init];
-  UIImage *testImage = [[UIImage alloc] init];
   TestProtocolClass *testObject = ({
     TestProtocolClass *object = [TestProtocolClass new];
     object.testInt = 1;
@@ -118,7 +117,7 @@
     object.testNSNumber = @42;
     object.testString = @"Test String";
     object.testData = testData;
-    object.testImage = testImage;
+    object.testBool = YES;
     object;
   });
   
@@ -165,13 +164,12 @@
   XCTAssertEqual(column.value, testData, @"Check the column value is correct.");
   
   column = statement.columns[10];
-  XCTAssertEqualObjects(@"testImage", column.name, @"Check Column Name");
+  XCTAssertEqualObjects(@"testBool", column.name, @"Check Column Name");
   XCTAssertEqual(column.type, SQLColumnTypeBlob, @"Check Column Type");
-  XCTAssertEqual(column.value, testImage, @"Check the column value is correct.");
+  XCTAssertEqual(column.value, @YES, @"Check the column value is correct.");
 }
 - (void) testInsert{
   NSData *testData = [[NSData alloc] init];
-  UIImage *testImage = [[UIImage alloc] init];
   TestProtocolClass *testObject = ({
     TestProtocolClass *object = [TestProtocolClass new];
     object.testInt = 1;
@@ -181,7 +179,7 @@
     object.testNSNumber = @42;
     object.testString = @"Test String";
     object.testData = testData;
-    object.testImage = testImage;
+    object.testBool = YES;
     object;
   });
   
@@ -228,8 +226,8 @@
   XCTAssertEqual(column.value, testData, @"Check the column value is correct.");
   
   column = statement.columns[10];
-  XCTAssertEqualObjects(@"testImage", column.name, @"Check Column Name");
+  XCTAssertEqualObjects(@"testBool", column.name, @"Check Column Name");
   XCTAssertEqual(column.type, SQLColumnTypeBlob, @"Check Column Type");
-  XCTAssertEqual(column.value, testImage, @"Check the column value is correct.");
+  XCTAssertEqual(column.value, @YES, @"Check the column value is correct.");
 }
 @end

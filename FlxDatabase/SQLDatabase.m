@@ -161,9 +161,9 @@
         //Bind each argument to the statement depending on class type
     for (int i=1; i <= expectedArguments; i++){
         argument = [arguments objectAtIndex:i-1];
-        if ([argument isKindOfClass:[UIImage class]]){
-            argument = UIImagePNGRepresentation((UIImage *)argument);
-        }
+//        if ([argument isKindOfClass:[UIImage class]]){
+//            argument = UIImagePNGRepresentation((UIImage *)argument);
+//        }
         if([argument isKindOfClass:[NSString class]])
             sqlite3_bind_text(statement, i, [argument UTF8String], -1, SQLITE_TRANSIENT);
         else if ([argument isKindOfClass:[NSData class]])
