@@ -177,6 +177,13 @@ typedef void (^CompletionBlock) (void);
  */
 - (NSArray *) runSynchronousUpdateQueue:(SQLUpdateQueue *)updates;
 /**
+ *  This will take a statement, compare the columns in that statement to the columns in the database table (also listed in the statement) and add any missing columns listed in the statement to the table. If the table doesn't exist, this will create a new table with the column in the statement.  This *will not* delete columns in the table not present in the statement because, quite frankly, SQLite doesn't allow column deletion.
+ *
+ *  @param statement       The statement you want to use to update the table to.
+ *  @param completionBlock **optional** completion block to be run when done.
+ */
+- (void) updateOrCreateTableToColumnsInStatement:(SQLStatement *)statement onCompletion:(CompletionBlock)completionBlock;
+/**
  *  This will take a statement, compare the columns in that statement to the columns in the database table (also listed in the statement) and add any missing columns listed in the statement to the table.  This *will not* delete columns in the table not present in the statement because, quite frankly, SQLite doesn't allow column deletion.
  *
  *  @param statement       The statement you want to use to update the table to.

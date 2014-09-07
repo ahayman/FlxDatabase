@@ -398,6 +398,62 @@ static NSMutableDictionary *DBManagers(){
     });
     return results;
 }
+- (void) updateOrCreateTableToColumnsInStatement:(SQLStatement *)statement onCompletion:(CompletionBlock)completionBlock{
+  NSString *tableName = statement.tableName;
+  if (!tableName) return;
+  
+  [self runImmediateQuery:[SQLStatement getAllTables] withBlock:^(NSArray *results) {
+    BOOL tableExists = ({
+      BOOL tableFound = NO;
+      for (id table in results){
+        NSString *tName = [table isKindOfClass:[NSString class]] ? table :
+                          [table isKindOfClass:[NSDictionary class]] ? table[@"name"] : nil;
+        if ([tName isEqualToString:tableName]){
+          tableFound = YES;
+          break;
+        }
+      }
+      tableFound;
+    });
+    
+    if (tableExists){
+      statement.tableInfo = YES;
+      [self runImmediateQuery:statement withBlock:^(NSArray *tableResults){
+        SQLDelayedExecution *rExec = (completionBlock) ? [SQLDelayedExecution new] : nil;
+        [rExec addBlock:completionBlock];
+        BOOL found = NO;
+        NSMutableArray *results = [NSMutableArray arrayWithArray:tableResults];
+        SQLStatement *addColumn;
+        for (SQLColumn *column in statement.columns) if (![column.name isEqualToString:@"*"]){
+          for (NSDictionary *dict in results) if ([column.name isEqualToString:[dict objectForKey:@"name"]]){
+            [results removeObject:dict];
+            found = YES;
+            break;
+          }
+          if (found == NO){
+            [rExec increment];
+            addColumn = [[SQLStatement alloc] initWithType:SQLStatementAddColumn forTable:statement.tableName];
+            [addColumn addSQLColumn:column];
+            [self runImmediateUpdate:addColumn withBlock:^(NSInteger result){
+              if (result >= 0){
+                [rExec decrement];
+              } //else FlxLog(@"SQLExecutionManager.updateTableToColumnsInConstructor: SQL Column Add failed: %@", addColumn.newStatement);
+            }];
+          }
+          found = NO;
+        }
+        statement.tableInfo = NO;
+        [rExec decrement];
+      }];
+    } else {
+      SQLStatement *createStatement = [statement copy];
+      createStatement.SQLType = SQLStatementCreate;
+      [self runImmediateUpdate:createStatement withBlock:^(NSInteger result) {
+        if (completionBlock) completionBlock();
+      }];
+    }
+  }];
+}
 - (void) updateTableToColumnsInStatement:(SQLStatement *)statement onCompletion:(CompletionBlock)completionBlock{
     statement.tableInfo = YES;
     [self runImmediateQuery:statement withBlock:^(NSArray *tableResults){

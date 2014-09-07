@@ -11,15 +11,6 @@
 #define $(...)        [NSString  stringWithFormat:__VA_ARGS__,nil]
 
 @interface SQLStatement ()
-- (NSString *) constructCreateStatement;
-- (NSString *) constructUpdateStatement;
-- (NSString *) constructInsertStatement;
-- (NSString *) constructQueryStatement;
-- (NSString *) constructDropTable;
-- (NSString *) constructDelete;
-- (NSString *) constructAlterTable;
-- (NSString *) constructAddColumn;
-- (NSString *) sqlConflictString;
 
 @property (strong) NSMutableArray *columns;
 @property (strong) NSMutableArray *predicates;
