@@ -23,7 +23,6 @@
 /* Begin PBXBuildFile section */
 		9302634619B90067009BE472 /* SQLStatementConstructor.m in Sources */ = {isa = PBXBuildFile; fileRef = 9302634519B90067009BE472 /* SQLStatementConstructor.m */; };
 		9302634819B918F3009BE472 /* SQLStatementConstructorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9302634719B918F3009BE472 /* SQLStatementConstructorTests.m */; };
-		9302634B19B9253B009BE472 /* SQLDelayedExecution.m in Sources */ = {isa = PBXBuildFile; fileRef = 9302634A19B9253B009BE472 /* SQLDelayedExecution.m */; };
 		9302635019B926BF009BE472 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9302634E19B9264B009BE472 /* libsqlite3.dylib */; };
 		93D1717F18859C9C0028FF0F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93D1717E18859C9B0028FF0F /* Foundation.framework */; };
 		93D1718D18859C9C0028FF0F /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93D1718C18859C9C0028FF0F /* XCTest.framework */; };
@@ -75,8 +74,6 @@
 		9302634419B90067009BE472 /* SQLStatementConstructor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SQLStatementConstructor.h; sourceTree = "<group>"; };
 		9302634519B90067009BE472 /* SQLStatementConstructor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SQLStatementConstructor.m; sourceTree = "<group>"; };
 		9302634719B918F3009BE472 /* SQLStatementConstructorTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SQLStatementConstructorTests.m; sourceTree = "<group>"; };
-		9302634919B9253B009BE472 /* SQLDelayedExecution.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SQLDelayedExecution.h; sourceTree = "<group>"; };
-		9302634A19B9253B009BE472 /* SQLDelayedExecution.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SQLDelayedExecution.m; sourceTree = "<group>"; };
 		9302634E19B9264B009BE472 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		933F1E4B1889701C00138795 /* SQLStatementProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SQLStatementProtocol.h; sourceTree = "<group>"; };
 		93D1717B18859C9B0028FF0F /* libFlxDatabase.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libFlxDatabase.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -171,8 +168,6 @@
 				93D171B318859DD60028FF0F /* SQLStatement.m */,
 				9302634419B90067009BE472 /* SQLStatementConstructor.h */,
 				9302634519B90067009BE472 /* SQLStatementConstructor.m */,
-				9302634919B9253B009BE472 /* SQLDelayedExecution.h */,
-				9302634A19B9253B009BE472 /* SQLDelayedExecution.m */,
 				93D1718118859C9C0028FF0F /* Supporting Files */,
 			);
 			path = FlxDatabase;
@@ -307,7 +302,6 @@
 				93D171C218859DD60028FF0F /* SQLStatement.m in Sources */,
 				93D171B818859DD60028FF0F /* SQLDatabase.m in Sources */,
 				93D171B618859DD60028FF0F /* SQLColumn.m in Sources */,
-				9302634B19B9253B009BE472 /* SQLDelayedExecution.m in Sources */,
 				93D171BC18859DD60028FF0F /* SQLOrder.m in Sources */,
 				93D171BE18859DD60028FF0F /* SQLPredicate.m in Sources */,
 				9302634619B90067009BE472 /* SQLStatementConstructor.m in Sources */,
