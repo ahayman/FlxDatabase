@@ -42,9 +42,9 @@ typedef NS_ENUM(NSUInteger, SQLConflict) {
 @interface SQLStatement : NSObject <SQLStatementProtocol, NSCopying>
 
 /**
- *  This will return a NSArray of SQLColumn items currently in the statement.
+ *  This will return a NSDictionary of SQLColumn items currently in the statement keyed to the column's nameString.
  */
-@property (readonly) NSArray *columns;
+@property (readonly) NSDictionary *columns;
 
 /**
  *  This will return a NSArray of SQLPredicate & SQLPredicateGroup items currently in the statement.

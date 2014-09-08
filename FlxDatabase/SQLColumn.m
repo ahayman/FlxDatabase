@@ -45,17 +45,6 @@
     return self;
 }
 #pragma mark - Private Methods
-- (NSString *) nameString{
-    if (_alias){
-        return _alias;
-    } else {
-        if (_type != SQLColumnTypeNone){
-            return $(@"%@(%@)", self.columnAggregateString, _name);
-        } else {
-            return _name;
-        }
-    }
-}
 #pragma mark - Protocol Methods
 - (id) copyWithZone:(NSZone *)zone{
     SQLColumn *copy = [[SQLColumn alloc] initWithColumn:_name usingAlias:_alias];
@@ -67,6 +56,17 @@
     return copy;
 }
 #pragma mark - Properties
+- (NSString *) nameString{
+    if (_alias){
+        return _alias;
+    } else {
+        if (_type != SQLColumnTypeNone){
+            return $(@"%@(%@)", self.columnAggregateString, _name);
+        } else {
+            return _name;
+        }
+    }
+}
 - (NSString *) columnTypeString{
     switch (_type) {
         case SQLColumnTypeText:

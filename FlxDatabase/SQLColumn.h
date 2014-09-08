@@ -41,6 +41,9 @@ typedef NS_ENUM(NSUInteger, SQLAggregate){
  */
 @property (readonly) NSString *alias;
 /**
+ The name string is used for hashing and to determine column uniqueness.  It will either be the column's alias, if you're using one, the name or else the name and aggregate if you're using an aggregate. */
+@property (readonly) NSString *nameString;
+/**
  *  The aggregate is only used for Queries and it will aggregate the data in this column according to the type you set here. How this work may depend on how the rest of the statement is setup (other columns, whether you've added groups, etc...).  If you're unsure, you probably need to brush up your SQL.
  *  Default: SQLAggregateNone
  */

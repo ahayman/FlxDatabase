@@ -19,6 +19,10 @@
 + (SQLStatement *) constructStatement:(SQLStatementType)statementType fromProtocol:(Protocol *)proto usingTableName:(NSString *)tableName;
 + (SQLStatement *) constructUpdateStatementFromObject:(id)object usingProtocol:(Protocol *)proto;
 + (SQLStatement *) constructUpdateStatementFromObject:(id)object usingProtocol:(Protocol *)proto tableName:(NSString *)tableName;
++ (SQLStatement *) constructUpdateStatementFromObject:(id)object usingProtocol:(Protocol *)proto onKey:(NSString *)key tableName:(NSString *)tableName;
 + (SQLStatement *) constructInsertStatementFromObject:(id)object usingProtocol:(Protocol *)proto;
 + (SQLStatement *) constructInsertStatementFromObject:(id)object usingProtocol:(Protocol *)proto tableName:(NSString *)tableName;
++ (SQLStatement *) constructDeleteStatementFromObject:(id)object usingProtocol:(Protocol *)proto;
++ (SQLStatement *) constructDeleteStatementFromObject:(id)object usingProtocol:(Protocol *)proto onKey:(NSString *)key;
++ (SQLStatement *) constructDeleteStatementFromObject:(id)object onKey:(NSString *)key usingProtocol:(Protocol *)proto tableName:(NSString *)tableName;
 @end

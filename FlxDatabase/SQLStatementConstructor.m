@@ -139,15 +139,46 @@
   return [self constructStatement:statementType fromProtocol:proto usingTableName:tableName usingValuesFromObject:nil];
 }
 + (SQLStatement *) constructUpdateStatementFromObject:(id)object usingProtocol:(Protocol *)proto{
-  return [self constructStatement:SQLStatementUpdate fromProtocol:proto usingTableName:nil usingValuesFromObject:object];
+  return [self constructUpdateStatementFromObject:object usingProtocol:proto onKey:GUIDKey tableName:[self tableNameFromProtocol:proto]];
 }
 + (SQLStatement *) constructUpdateStatementFromObject:(id)object usingProtocol:(Protocol *)proto tableName:(NSString *)tableName{
-  return [self constructStatement:SQLStatementUpdate fromProtocol:proto usingTableName:tableName usingValuesFromObject:object];
+  return [self constructUpdateStatementFromObject:object usingProtocol:proto onKey:GUIDKey tableName:tableName];
+}
++ (SQLStatement *) constructUpdateStatementFromObject:(id)object usingProtocol:(Protocol *)proto onKey:(NSString *)key tableName:(NSString *)tableName{
+  if (!object) return nil;
+  if (!key) key = GUIDKey;
+  if (![object respondsToSelector:NSSelectorFromString(key)]) return nil;
+  id value = [object valueForKey:key];
+  if (!value) return nil;
+  
+  SQLStatement *statement = [self constructStatement:SQLStatementUpdate fromProtocol:proto usingTableName:tableName usingValuesFromObject:object];
+  [statement addPredicate:value forColumn:key];
+  
+  return statement;
 }
 + (SQLStatement *) constructInsertStatementFromObject:(id)object usingProtocol:(Protocol *)proto{
   return [self constructStatement:SQLStatementInsert fromProtocol:proto usingTableName:nil usingValuesFromObject:object];
 }
 + (SQLStatement *) constructInsertStatementFromObject:(id)object usingProtocol:(Protocol *)proto tableName:(NSString *)tableName{
   return [self constructStatement:SQLStatementInsert fromProtocol:proto usingTableName:tableName usingValuesFromObject:object];
+}
++ (SQLStatement *) constructDeleteStatementFromObject:(id)object usingProtocol:(Protocol *)proto{
+  return [self constructDeleteStatementFromObject:object onKey:GUIDKey usingProtocol:proto tableName:nil];
+}
++ (SQLStatement *) constructDeleteStatementFromObject:(id)object usingProtocol:(Protocol *)proto onKey:(NSString *)key{
+  return [self constructDeleteStatementFromObject:object onKey:key usingProtocol:proto tableName:nil];
+}
++ (SQLStatement *) constructDeleteStatementFromObject:(id)object onKey:(NSString *)key usingProtocol:(Protocol *)proto tableName:(NSString *)tableName{
+  if (!tableName && !proto) return nil;
+  if (!tableName) tableName = [self tableNameFromProtocol:proto];
+  if (!object) return nil;
+  if (!key) key = GUIDKey;
+  if (![object respondsToSelector:NSSelectorFromString(key)]) return nil;
+  id value = [object valueForKey:key];
+  if (!value) return nil;
+  
+  SQLStatement *statement = [SQLStatement statementType:SQLStatementDelete forTable:tableName];
+  [statement addPredicate:value forColumn:key];
+  return statement;
 }
 @end
