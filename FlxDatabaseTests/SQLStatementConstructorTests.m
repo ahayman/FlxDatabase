@@ -60,67 +60,67 @@
   
   SQLColumn *column;
   
-  column = statement.columns[0];
+  column = statement.columns[@"GUID"];
   XCTAssertEqualObjects(@"GUID", column.name, @"Check Column Name");
   XCTAssertEqual(column.type, SQLColumnTypeText, @"Check Column Type");
   
-  column = statement.columns[1];
+  column = statement.columns[@"SQLCreatedDateTime"];
   XCTAssertEqualObjects(@"SQLCreatedDateTime", column.name, @"Check Column Name");
   XCTAssertEqual(column.type, SQLColumnTypeReal, @"Check Column Type");
   
-  column = statement.columns[2];
+  column = statement.columns[@"SQLModifiedDateTime"];
   XCTAssertEqualObjects(@"SQLModifiedDateTime", column.name, @"Check Column Name");
   XCTAssertEqual(column.type, SQLColumnTypeReal, @"Check Column Type");
   
-  column = statement.columns[3];
+  column = statement.columns[@"testInt"];
   XCTAssertEqualObjects(@"testInt", column.name, @"Check Column Name");
   XCTAssertEqual(column.type, SQLColumnTypeInt, @"Check Column Type");
   
-  column = statement.columns[4];
+  column = statement.columns[@"testDouble"];
   XCTAssertEqualObjects(@"testDouble", column.name, @"Check Column Name");
   XCTAssertEqual(column.type, SQLColumnTypeReal, @"Check Column Type");
   
-  column = statement.columns[5];
+  column = statement.columns[@"testFloat"];
   XCTAssertEqualObjects(@"testFloat", column.name, @"Check Column Name");
   XCTAssertEqual(column.type, SQLColumnTypeReal, @"Check Column Type");
   
-  column = statement.columns[6];
+  column = statement.columns[@"testLongLong"];
   XCTAssertEqualObjects(@"testLongLong", column.name, @"Check Column Name");
   XCTAssertEqual(column.type, SQLColumnTypeInt, @"Check Column Type");
   
-  column = statement.columns[7];
+  column = statement.columns[@"testNSNumber"];
   XCTAssertEqualObjects(@"testNSNumber", column.name, @"Check Column Name");
   XCTAssertEqual(column.type, SQLColumnTypeReal, @"Check Column Type");
   
-  column = statement.columns[8];
+  column = statement.columns[@"testString"];
   XCTAssertEqualObjects(@"testString", column.name, @"Check Column Name");
   XCTAssertEqual(column.type, SQLColumnTypeText, @"Check Column Type");
   
-  column = statement.columns[9];
+  column = statement.columns[@"testData"];
   XCTAssertEqualObjects(@"testData", column.name, @"Check Column Name");
   XCTAssertEqual(column.type, SQLColumnTypeBlob, @"Check Column Type");
   
-  column = statement.columns[10];
+  column = statement.columns[@"testBool"];
   XCTAssertEqualObjects(@"testBool", column.name, @"Check Column Name");
   XCTAssertEqual(column.type, SQLColumnTypeInt, @"Check Column Type");
   
-  column = statement.columns[11];
+  column = statement.columns[@"testUnsignedLong"];
   XCTAssertEqualObjects(@"testUnsignedLong", column.name, @"Check Column Name");
   XCTAssertEqual(column.type, SQLColumnTypeInt, @"Check Column Type");
   
-  column = statement.columns[12];
+  column = statement.columns[@"testUnsignedLongLong"];
   XCTAssertEqualObjects(@"testUnsignedLongLong", column.name, @"Check Column Name");
   XCTAssertEqual(column.type, SQLColumnTypeInt, @"Check Column Type");
   
-  column = statement.columns[13];
+  column = statement.columns[@"testShort"];
   XCTAssertEqualObjects(@"testShort", column.name, @"Check Column Name");
   XCTAssertEqual(column.type, SQLColumnTypeInt, @"Check Column Type");
   
-  column = statement.columns[14];
+  column = statement.columns[@"testLong"];
   XCTAssertEqualObjects(@"testLong", column.name, @"Check Column Name");
   XCTAssertEqual(column.type, SQLColumnTypeInt, @"Check Column Type");
   
-  column = statement.columns[15];
+  column = statement.columns[@"testUnsignedShort"];
   XCTAssertEqualObjects(@"testUnsignedShort", column.name, @"Check Column Name");
   XCTAssertEqual(column.type, SQLColumnTypeInt, @"Check Column Type");
 }
@@ -136,6 +136,7 @@
   NSData *testData = [[NSData alloc] init];
   TestProtocolClass *testObject = ({
     TestProtocolClass *object = [TestProtocolClass new];
+    object.GUID = @"TestObjectID";
     object.testInt = 1;
     object.testDouble = 1.05;
     object.testFloat = 1.045f;
@@ -159,67 +160,67 @@
   
   SQLColumn *column;
   
-  column = statement.columns[3];
+  column = statement.columns[@"testInt"];
   XCTAssertEqualObjects(@"testInt", column.name, @"Check Column Name");
   XCTAssertEqual(column.type, SQLColumnTypeInt, @"Check Column Type");
   XCTAssertEqualObjects(column.value, @1, @"Check the column value is correct.");
   
-  column = statement.columns[4];
+  column = statement.columns[@"testDouble"];
   XCTAssertEqualObjects(@"testDouble", column.name, @"Check Column Name");
   XCTAssertEqual(column.type, SQLColumnTypeReal, @"Check Column Type");
   XCTAssertEqualObjects(column.value, @1.05, @"Check the column value is correct.");
   
-  column = statement.columns[5];
+  column = statement.columns[@"testFloat"];
   XCTAssertEqualObjects(@"testFloat", column.name, @"Check Column Name");
   XCTAssertEqual(column.type, SQLColumnTypeReal, @"Check Column Type");
   XCTAssertEqualObjects(column.value, @1.045f, @"Check the column value is correct.");
   
-  column = statement.columns[6];
+  column = statement.columns[@"testLongLong"];
   XCTAssertEqualObjects(@"testLongLong", column.name, @"Check Column Name");
   XCTAssertEqual(column.type, SQLColumnTypeInt, @"Check Column Type");
   XCTAssertEqualObjects(column.value, @52, @"Check the column value is correct.");
   
-  column = statement.columns[7];
+  column = statement.columns[@"testNSNumber"];
   XCTAssertEqualObjects(@"testNSNumber", column.name, @"Check Column Name");
   XCTAssertEqual(column.type, SQLColumnTypeReal, @"Check Column Type");
   XCTAssertEqualObjects(column.value, @42, @"Check the column value is correct.");
   
-  column = statement.columns[8];
+  column = statement.columns[@"testString"];
   XCTAssertEqualObjects(@"testString", column.name, @"Check Column Name");
   XCTAssertEqual(column.type, SQLColumnTypeText, @"Check Column Type");
   XCTAssertEqualObjects(column.value, @"Test String", @"Check the column value is correct.");
   
-  column = statement.columns[9];
+  column = statement.columns[@"testData"];
   XCTAssertEqualObjects(@"testData", column.name, @"Check Column Name");
   XCTAssertEqual(column.type, SQLColumnTypeBlob, @"Check Column Type");
   XCTAssertEqual(column.value, testData, @"Check the column value is correct.");
   
-  column = statement.columns[10];
+  column = statement.columns[@"testBool"];
   XCTAssertEqualObjects(@"testBool", column.name, @"Check Column Name");
   XCTAssertEqual(column.type, SQLColumnTypeInt, @"Check Column Type");
   XCTAssertEqual(column.value, @YES, @"Check the column value is correct.");
   
-  column = statement.columns[11];
+  column = statement.columns[@"testUnsignedLong"];
   XCTAssertEqualObjects(@"testUnsignedLong", column.name, @"Check Column Name");
   XCTAssertEqual(column.type, SQLColumnTypeInt, @"Check Column Type");
   XCTAssertEqualObjects(column.value, @38, @"Check the column value is correct.");
   
-  column = statement.columns[12];
+  column = statement.columns[@"testUnsignedLongLong"];
   XCTAssertEqualObjects(@"testUnsignedLongLong", column.name, @"Check Column Name");
   XCTAssertEqual(column.type, SQLColumnTypeInt, @"Check Column Type");
   XCTAssertEqualObjects(column.value, @1092, @"Check the column value is correct.");
   
-  column = statement.columns[13];
+  column = statement.columns[@"testShort"];
   XCTAssertEqualObjects(@"testShort", column.name, @"Check Column Name");
   XCTAssertEqual(column.type, SQLColumnTypeInt, @"Check Column Type");
   XCTAssertEqualObjects(column.value, @29, @"Check the column value is correct.");
   
-  column = statement.columns[14];
+  column = statement.columns[@"testLong"];
   XCTAssertEqualObjects(@"testLong", column.name, @"Check Column Name");
   XCTAssertEqual(column.type, SQLColumnTypeInt, @"Check Column Type");
   XCTAssertEqualObjects(column.value, @123, @"Check the column value is correct.");
   
-  column = statement.columns[15];
+  column = statement.columns[@"testUnsignedShort"];
   XCTAssertEqualObjects(@"testUnsignedShort", column.name, @"Check Column Name");
   XCTAssertEqual(column.type, SQLColumnTypeInt, @"Check Column Type");
   XCTAssertEqualObjects(column.value, @23, @"Check the column value is correct.");
@@ -228,6 +229,7 @@
   NSData *testData = [[NSData alloc] init];
   TestProtocolClass *testObject = ({
     TestProtocolClass *object = [TestProtocolClass new];
+    object.GUID = @"TestObjectID";
     object.testInt = 1;
     object.testDouble = 1.05;
     object.testFloat = 1.045f;
@@ -251,67 +253,67 @@
   
   SQLColumn *column;
   
-  column = statement.columns[3];
+  column = statement.columns[@"testInt"];
   XCTAssertEqualObjects(@"testInt", column.name, @"Check Column Name");
   XCTAssertEqual(column.type, SQLColumnTypeInt, @"Check Column Type");
   XCTAssertEqualObjects(column.value, @1, @"Check the column value is correct.");
   
-  column = statement.columns[4];
+  column = statement.columns[@"testDouble"];
   XCTAssertEqualObjects(@"testDouble", column.name, @"Check Column Name");
   XCTAssertEqual(column.type, SQLColumnTypeReal, @"Check Column Type");
   XCTAssertEqualObjects(column.value, @1.05, @"Check the column value is correct.");
   
-  column = statement.columns[5];
+  column = statement.columns[@"testFloat"];
   XCTAssertEqualObjects(@"testFloat", column.name, @"Check Column Name");
   XCTAssertEqual(column.type, SQLColumnTypeReal, @"Check Column Type");
   XCTAssertEqualObjects(column.value, @1.045f, @"Check the column value is correct.");
   
-  column = statement.columns[6];
+  column = statement.columns[@"testLongLong"];
   XCTAssertEqualObjects(@"testLongLong", column.name, @"Check Column Name");
   XCTAssertEqual(column.type, SQLColumnTypeInt, @"Check Column Type");
   XCTAssertEqualObjects(column.value, @52, @"Check the column value is correct.");
   
-  column = statement.columns[7];
+  column = statement.columns[@"testNSNumber"];
   XCTAssertEqualObjects(@"testNSNumber", column.name, @"Check Column Name");
   XCTAssertEqual(column.type, SQLColumnTypeReal, @"Check Column Type");
   XCTAssertEqualObjects(column.value, @42, @"Check the column value is correct.");
   
-  column = statement.columns[8];
+  column = statement.columns[@"testString"];
   XCTAssertEqualObjects(@"testString", column.name, @"Check Column Name");
   XCTAssertEqual(column.type, SQLColumnTypeText, @"Check Column Type");
   XCTAssertEqualObjects(column.value, @"Test String", @"Check the column value is correct.");
   
-  column = statement.columns[9];
+  column = statement.columns[@"testData"];
   XCTAssertEqualObjects(@"testData", column.name, @"Check Column Name");
   XCTAssertEqual(column.type, SQLColumnTypeBlob, @"Check Column Type");
   XCTAssertEqual(column.value, testData, @"Check the column value is correct.");
   
-  column = statement.columns[10];
+  column = statement.columns[@"testBool"];
   XCTAssertEqualObjects(@"testBool", column.name, @"Check Column Name");
   XCTAssertEqual(column.type, SQLColumnTypeInt, @"Check Column Type");
   XCTAssertEqual(column.value, @YES, @"Check the column value is correct.");
   
-  column = statement.columns[11];
+  column = statement.columns[@"testUnsignedLong"];
   XCTAssertEqualObjects(@"testUnsignedLong", column.name, @"Check Column Name");
   XCTAssertEqual(column.type, SQLColumnTypeInt, @"Check Column Type");
   XCTAssertEqualObjects(column.value, @38, @"Check the column value is correct.");
   
-  column = statement.columns[12];
+  column = statement.columns[@"testUnsignedLongLong"];
   XCTAssertEqualObjects(@"testUnsignedLongLong", column.name, @"Check Column Name");
   XCTAssertEqual(column.type, SQLColumnTypeInt, @"Check Column Type");
   XCTAssertEqualObjects(column.value, @1092, @"Check the column value is correct.");
   
-  column = statement.columns[13];
+  column = statement.columns[@"testShort"];
   XCTAssertEqualObjects(@"testShort", column.name, @"Check Column Name");
   XCTAssertEqual(column.type, SQLColumnTypeInt, @"Check Column Type");
   XCTAssertEqualObjects(column.value, @29, @"Check the column value is correct.");
   
-  column = statement.columns[14];
+  column = statement.columns[@"testLong"];
   XCTAssertEqualObjects(@"testLong", column.name, @"Check Column Name");
   XCTAssertEqual(column.type, SQLColumnTypeInt, @"Check Column Type");
   XCTAssertEqualObjects(column.value, @123, @"Check the column value is correct.");
   
-  column = statement.columns[15];
+  column = statement.columns[@"testUnsignedShort"];
   XCTAssertEqualObjects(@"testUnsignedShort", column.name, @"Check Column Name");
   XCTAssertEqual(column.type, SQLColumnTypeInt, @"Check Column Type");
   XCTAssertEqualObjects(column.value, @23, @"Check the column value is correct.");

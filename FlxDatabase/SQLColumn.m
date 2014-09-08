@@ -60,7 +60,7 @@
     if (_alias){
         return _alias;
     } else {
-        if (_type != SQLColumnTypeNone){
+        if (_aggregate != SQLAggregateNone){
             return $(@"%@(%@)", self.columnAggregateString, _name);
         } else {
             return _name;
