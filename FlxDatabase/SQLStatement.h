@@ -41,6 +41,7 @@ typedef NS_ENUM(NSUInteger, SQLConflict) {
  **/
 @interface SQLStatement : NSObject <SQLStatementProtocol, NSCopying>
 
++ (NSString *) newGUID;
 /**
  *  This will return a NSDictionary of SQLColumn items currently in the statement keyed to the column's nameString.
  */

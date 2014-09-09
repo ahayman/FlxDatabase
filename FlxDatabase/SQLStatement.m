@@ -63,6 +63,12 @@ static NSArray *defaultColumnTypes(){
 + (SQLStatement *) statementType:(SQLStatementType)type forTable:(NSString *)table{
   return [[SQLStatement alloc] initWithType:type forTable:table];
 }
++ (NSString *) newGUID{
+    CFUUIDRef theUUID = CFUUIDCreate(NULL);
+    CFStringRef string = CFUUIDCreateString(NULL, theUUID);
+    CFRelease(theUUID);
+    return (__bridge_transfer NSString *)string;
+}
 - (id) init{
   return nil;
 }
@@ -486,10 +492,7 @@ static NSArray *defaultColumnTypes(){
 }
 - (NSString *) GUID{
   if (!_GUID){
-    CFUUIDRef theUUID = CFUUIDCreate(NULL);
-    CFStringRef string = CFUUIDCreateString(NULL, theUUID);
-    CFRelease(theUUID);
-    _GUID = (__bridge_transfer NSString *)string;
+    _GUID = [SQLStatement newGUID];
   }
   return _GUID;
 }

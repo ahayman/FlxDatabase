@@ -160,7 +160,12 @@
   return [self constructStatement:SQLStatementInsert fromProtocol:proto usingTableName:nil usingValuesFromObject:object];
 }
 + (SQLStatement *) constructInsertStatementFromObject:(id)object usingProtocol:(Protocol *)proto tableName:(NSString *)tableName{
-  return [self constructStatement:SQLStatementInsert fromProtocol:proto usingTableName:tableName usingValuesFromObject:object];
+  SQLStatement *statement = [self constructStatement:SQLStatementInsert fromProtocol:proto usingTableName:tableName usingValuesFromObject:object];
+  NSString *GUID = nil;
+  if ([object respondsToSelector:@selector(GUID)] && (GUID = [object GUID])){
+    statement.GUID = GUID;
+  }
+  return statement;
 }
 + (SQLStatement *) constructDeleteStatementFromObject:(id)object usingProtocol:(Protocol *)proto{
   return [self constructDeleteStatementFromObject:object onKey:GUIDKey usingProtocol:proto tableName:nil];
