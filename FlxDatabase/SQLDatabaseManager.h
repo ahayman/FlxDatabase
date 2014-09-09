@@ -280,7 +280,7 @@ typedef void (^CompletionBlock) (void);
  *
  *  @return YES if the statement was added, NO if it was not added. The statement won't be added if the statement is not a query or if you do not supply a block.
  */
-- (bool) addSQLQuery:(id <SQLStatementProtocol>)statement withBlock:(QueueBlock)block usingRowClass:(Class)rowClass;
+- (bool) addSQLQuery:(id <SQLStatementProtocol>)statement usingRowClass:(Class)rowClass withBlock:(QueueBlock)block;
 /**
  *  This will append the queries from the provided Queue to this one.
  *

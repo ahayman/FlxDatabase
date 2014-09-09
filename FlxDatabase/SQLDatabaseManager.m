@@ -190,7 +190,7 @@ static NSMutableDictionary *DBManagers(){
   [self setQueryNeedsProcessing];
 }
 - (void) queueQuery:(id<SQLStatementProtocol>)statement usingClassForRow:(Class)rowClass withBlock:(QueueBlock)blockToProcess{
-  [_queryQueue addSQLQuery:statement withBlock:blockToProcess usingRowClass:rowClass];
+  [_queryQueue addSQLQuery:statement usingRowClass:rowClass withBlock:blockToProcess];
   [self setQueryNeedsProcessing];
 }
 - (void) queueQueries:(SQLQueryQueue *)queue{
@@ -215,7 +215,7 @@ static NSMutableDictionary *DBManagers(){
 }
 - (void) runImmediateQuery:(id<SQLStatementProtocol>)statement usingRowClass:(Class)rowClass withBlock:(QueueBlock)blockToProcess{
   SQLQueryQueue *queue = [SQLQueryQueue new];
-  [queue addSQLQuery:statement withBlock:blockToProcess usingRowClass:rowClass];
+  [queue addSQLQuery:statement usingRowClass:rowClass withBlock:blockToProcess];
   [self runQueryQueue:queue];
 }
 - (void) runUpdateQueue:(SQLUpdateQueue *)queue withCompletionBlock:(void (^)(BOOL success))blockToProcess{
@@ -661,9 +661,9 @@ static NSMutableDictionary *DBManagers(){
 }
 #pragma mark - Standard Methods
 - (bool) addSQLQuery:(id <SQLStatementProtocol> )statement withBlock:(QueueBlock)block{
-  return [self addSQLQuery:statement withBlock:block usingRowClass:nil];
+  return [self addSQLQuery:statement usingRowClass:nil withBlock:block];
 }
-- (bool) addSQLQuery:(id <SQLStatementProtocol> )statement withBlock:(QueueBlock)block usingRowClass:(__unsafe_unretained Class)rowClass{
+- (bool) addSQLQuery:(id <SQLStatementProtocol>)statement usingRowClass:(Class)rowClass withBlock:(QueueBlock)block{
   if (block && statement && statement.SQLType == SQLStatementQuery){
     [_blocks addObject:[[SQLQueryBlock alloc] initWithConstructor:statement block:block rowClass:rowClass]];
     return YES;
