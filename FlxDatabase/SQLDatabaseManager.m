@@ -423,7 +423,7 @@ static NSMutableDictionary *DBManagers(){
     BOOL found = NO;
     NSMutableArray *results = [NSMutableArray arrayWithArray:tableResults];
     SQLUpdateQueue *updates = [SQLUpdateQueue new];
-    for (SQLColumn *column in statement.columns) if (![column.name isEqualToString:@"*"]){
+    for (SQLColumn *column in statement.columns.allValues) if (![column.name isEqualToString:@"*"]){
       for (NSDictionary *dict in results) if ([column.name isEqualToString:[dict objectForKey:@"name"]]){
         [results removeObject:dict];
         found = YES;
@@ -470,7 +470,7 @@ static NSMutableDictionary *DBManagers(){
         BOOL found = NO;
         NSMutableArray *results = [NSMutableArray arrayWithArray:tableResults];
         SQLUpdateQueue *updates = [SQLUpdateQueue new];
-        for (SQLColumn *column in statement.columns) if (![column.name isEqualToString:@"*"]){
+        for (SQLColumn *column in statement.columns.allValues) if (![column.name isEqualToString:@"*"]){
           for (NSDictionary *dict in results) if ([column.name isEqualToString:[dict objectForKey:@"name"]]){
             [results removeObject:dict];
             found = YES;
@@ -507,7 +507,7 @@ static NSMutableDictionary *DBManagers(){
     BOOL found = NO;
     NSMutableArray *results = [NSMutableArray arrayWithArray:tableResults];
     SQLUpdateQueue *updates = [SQLUpdateQueue new];
-    for (SQLColumn *column in statement.columns) if (![column.name isEqualToString:@"*"]){
+    for (SQLColumn *column in statement.columns.allValues) if (![column.name isEqualToString:@"*"]){
       for (NSDictionary *dict in results) if ([column.name isEqualToString:[dict objectForKey:@"name"]]){
         [results removeObject:dict];
         found = YES;
@@ -539,7 +539,7 @@ static NSMutableDictionary *DBManagers(){
     BOOL found = NO;
     NSMutableArray *results = [NSMutableArray arrayWithArray:tableResults];
     SQLStatement *addColumn;
-    for (SQLColumn *column in statement.columns) if (![column.name isEqualToString:@"*"]){
+    for (SQLColumn *column in statement.columns.allValues) if (![column.name isEqualToString:@"*"]){
       for (NSDictionary *dict in results) if ([column.name isEqualToString:[dict objectForKey:@"name"]]){
         [results removeObject:dict];
         found = YES;

@@ -92,8 +92,7 @@
 }
 + (NSString *) tableNameFromProtocol:(Protocol *)proto{
   if (!proto) return nil;
-  const char *protoName = protocol_getName(proto);
-  return [[NSString alloc] initWithBytes:protoName length:strlen(protoName) encoding:NSUTF8StringEncoding];
+  return NSStringFromProtocol(proto);
 }
 #pragma mark - Desginated Constructor
 + (SQLStatement *) constructStatement:(SQLStatementType)statementType fromProtocol:(Protocol *)proto usingTableName:(NSString *)tableName usingValuesFromObject:(id)valueObject{
@@ -157,7 +156,7 @@
   return statement;
 }
 + (SQLStatement *) constructInsertStatementFromObject:(id)object usingProtocol:(Protocol *)proto{
-  return [self constructStatement:SQLStatementInsert fromProtocol:proto usingTableName:nil usingValuesFromObject:object];
+  return [self constructInsertStatementFromObject:object usingProtocol:proto tableName:nil];
 }
 + (SQLStatement *) constructInsertStatementFromObject:(id)object usingProtocol:(Protocol *)proto tableName:(NSString *)tableName{
   SQLStatement *statement = [self constructStatement:SQLStatementInsert fromProtocol:proto usingTableName:tableName usingValuesFromObject:object];
