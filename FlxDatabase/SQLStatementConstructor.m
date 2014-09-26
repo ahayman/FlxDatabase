@@ -44,18 +44,12 @@
       propertyObj.propertyColumn = SQLColumnTypeInt;
       break;
     case '@':
-      if (attribute[2] == '"'){
-        unsigned long classNameLen = 3;
-        //Get the class name length by finding the closing quote
-        while (attribute[classNameLen] != '"' && classNameLen < attributeLen){
-          classNameLen++;
-        };
-        //We only need the length
-        classNameLen -= 3;
-        //Copy the class name
-        char *className = malloc(sizeof(classNameLen));
-        strncpy(className, &attribute[3], classNameLen);
-        Class propertyClass = NSClassFromString([[NSString alloc] initWithBytes:className length:classNameLen encoding:NSUTF8StringEncoding]);
+      if (attributeLen > 3 && attribute[2] == '"'){
+        NSString *attributeString = [[NSString alloc] initWithBytes:&attribute[3] length:attributeLen - 3 encoding:NSUTF8StringEncoding];
+        NSUInteger endIndex = [attributeString rangeOfString:@"\""].location;
+        attributeString = [attributeString substringToIndex:endIndex];
+        
+        Class propertyClass = NSClassFromString(attributeString);
         
         //Find out if we can use this class type
         if ([propertyClass isSubclassOfClass:[NSString class]]){
@@ -68,8 +62,6 @@
           //We don't recognize the class, so we can't use the property
           propertyObj = nil;
         }
-        
-        free(className);
         
       } else {
         propertyObj.propertyColumn = SQLColumnTypeNone;
