@@ -41,6 +41,8 @@
     case 'B':
     case 's':
     case 'S':
+    case 'c':
+    case 'C':
       propertyObj.propertyColumn = SQLColumnTypeInt;
       break;
     case '@':
@@ -153,8 +155,13 @@
 + (SQLStatement *) constructInsertStatementFromObject:(id)object usingProtocol:(Protocol *)proto tableName:(NSString *)tableName{
   SQLStatement *statement = [self constructStatement:SQLStatementInsert fromProtocol:proto usingTableName:tableName usingValuesFromObject:object];
   NSString *GUID = nil;
-  if ([object respondsToSelector:@selector(GUID)] && (GUID = [object GUID])){
-    statement.GUID = GUID;
+  if ([object respondsToSelector:@selector(GUID)]){
+    if ((GUID = [object GUID])){
+      statement.GUID = GUID;
+    } else {
+      GUID = statement.GUID;
+      [object setGUID:GUID];
+    }
   }
   return statement;
 }
