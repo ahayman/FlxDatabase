@@ -622,6 +622,7 @@ static NSMutableDictionary *DBManagers(){
   return [_blocks count];
 }
 - (SQLUpdateBlock *) updateBlockAtIndex:(NSUInteger)index{
+	if (index >= _blocks.count) return nil;
   return _blocks[index];
 }
 - (void) appendUpdatesFromQueue:(SQLUpdateQueue *)updateQueue{
@@ -674,6 +675,7 @@ static NSMutableDictionary *DBManagers(){
   return [_blocks count];
 }
 - (SQLQueryBlock *) queryBlockAtIndex:(NSUInteger)index{
+	if (index >= _blocks.count) return nil;
   return _blocks[index];
 }
 - (void) appendQueriesFromQueue:(SQLQueryQueue *)queryQueue{
